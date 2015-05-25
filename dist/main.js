@@ -9,35 +9,46 @@ function* guessingGame() {
 	// var rnd = Math.ceil(Math.random()*100);
 	// console.log(rnd);
 
-	do {
-
 	var rnd = Math.ceil(Math.random()*100);
 	console.log(rnd);
 
+
+	do {
+
 	var repeat = true;
 	var guess = yield game.ask("A random number between 0 & 100 has been generated, guess that number!");
-
-
-
-	if (parseInt(guess) === rnd) {
-		yield game.say("Whoa, good guess, you got it!");
-	}
-	else if (parseInt(guess) < rnd) {
-		yield game.say("Your guess is too low!  The number was " + rnd);
+	if (isNaN(guess)) {
+		yield game.say("Please enter a numeric value.");
 	}
 	else {
-		yield game.say("Your guess is too high!  The number was " + rnd);
-	}
-
-	var playAgain = yield game.choose("Would you like to play again?","Yes","No");
-		if (playAgain === "Yes") {
-			repeat = true;
-		}
-
-		else {
-			yield game.say("Goodbye, thanks for playing!");
+		if (parseInt(guess) === rnd) {
+			yield game.say("Whoa, good guess, you got it!  Thanks for playing!");
 			repeat = false;
 		}
+		else if (parseInt(guess) < rnd) {
+			yield game.say("Your guess is too low!");
+			var playAgain = yield game.choose("Would you like to guess again?","Yes","No");
+			if (playAgain === "Yes") {
+				repeat = true;
+			}
+
+			else {
+				yield game.say("Goodbye, thanks for playing!");
+				repeat = false;
+			}
+		}
+		else {
+				yield game.say("Your guess is too high!");
+				var playAgain = yield game.choose("Would you like to guess again?","Yes","No");
+				if (playAgain === "Yes") {
+					repeat = true;
+				}
+				else {
+					yield game.say("Goodbye, thanks for playing!");
+					repeat = false;
+				}
+		}
+	}
 
 	}while (repeat === true);
 }

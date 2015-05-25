@@ -252,8 +252,7 @@ select {
  *  Known issue: inner spacing remains in IE 6.
  */
 button,
-html input[type="button"],
-input[type="reset"],
+html input[type="button"], input[type="reset"],
 input[type="submit"] {
   -webkit-appearance: button;
   /* 2 */
@@ -381,7 +380,7 @@ nav {
   background: #3B3F45; }
 
 h1, h2 {
-  color: #fff;
+  color: #ccc;
   margin: 0; }
 
 h1 {
@@ -395,18 +394,18 @@ h2 {
 
 #continue {
   display: block;
-  float: right;
-  background: #232529;
+  margin: 0 auto;
+  background: #f8452d;
   color: #fff;
   padding: 0.6em 1.5em;
-  border: 3px solid #232529;
+  border: 5px outset #232529;
   border-radius: 40px;
   font-weight: 700;
   font-size: 1.25em;
   cursor: pointer;
   outline: none; }
   #continue:hover {
-    background: #52658C; }
+    background: #b91b06; }
 
 main {
   max-width: 60em;
@@ -474,5 +473,3 @@ input[type="text"] {
   width: 100%;
   font-size: 3.75em;
   color: #fff; }
-
-/*# sourceMappingURL=style.css.map */
